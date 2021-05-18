@@ -1,0 +1,649 @@
+<?xml version="1.0"?>
+<robot name="robot">
+
+ <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+  </material>
+
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+
+  <material name="green">
+    <color rgba="0.0 0.8 0.0 1.0"/>
+  </material>
+
+  <material name="grey">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+
+  <material name="red">
+    <color rgba="0.8 0.0 0.0 1.0"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+
+ <!--LINKS-->
+ <link name="base_footprint"/>
+ <link name="base">
+    <inertial>
+     <origin rpy="0 0 0" xyz="0 0 0.0"/>
+     <mass value="10"/>
+     <inertia ixx="0.03589" ixy="0" ixz="0" iyy="0.000193" iyz="0"  izz="0.000795"/>
+    </inertial>
+    <collision>
+      <geometry>
+       <mesh filename="package://robomuse_5/dae/frame.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 0" xyz="-0.2 0.3 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://robomuse_5/dae/frame.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+       <origin rpy="1.57 0 0" xyz="-0.2 0.3 0"/>
+    </visual>
+ </link>
+ <link name="wheel_l">
+    <inertial>
+     <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+     <mass value="0.01"/>
+     <inertia ixx="0.0160" ixy="0" ixz="0" iyy="0.0160" iyz="0"  izz="0.512"/>
+    </inertial>
+    <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/wheel.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="0 0 3.14" xyz="0.2 0.065 -0.065"/>
+    </collision>
+    <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/wheel.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+     <origin rpy="0 0 3.14" xyz="0.2 0.065 -0.065"/>
+    </visual>
+ </link>
+ <link name="wheel_r">
+    <inertial>
+      <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="0.0160" ixy="0" ixz="0" iyy="0.0160" iyz="0"  izz="0.512"/>
+    </inertial>
+    <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/wheel.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="0 0 0" xyz="-0.2 -0.065 -0.065"/>
+    </collision>
+    <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/wheel.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="0 0 0" xyz="-0.2 -0.065 -0.065"/>
+    </visual>
+ </link>
+ <!--CASTER CASE AND WHEEL LINKS-->
+ <link name="caster_fr">
+    <inertial>
+      <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="0.0160" ixy="0" ixz="0" iyy="0.0160" iyz="0"  izz="0.00002"/>
+    </inertial>
+    <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster_joint.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0.02 -0.055 -0.020"/>
+    </collision>
+    <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster_joint.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0.02 -0.055 -0.020"/>
+      <material name="blue"/>
+    </visual>
+ </link>
+ <link name="caster_wheel_fr_in">
+   <inertial>
+      <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+      <mass value="0.01"/>
+     <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="0.00002" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0 -0.030 -0.03"/>
+    </collision>
+    <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0 -0.030 -0.03"/>
+      <material name="blue"/>
+    </visual>
+ </link>
+ <link name="caster_wheel_fr_out">
+    <inertial>
+     <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+     <mass value="0.01"/>
+     <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="6.125e-5" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 0" xyz="0 0.030 -0.03"/>
+    </collision>
+    <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 0" xyz="0 0.030 -0.03"/>
+      <material name="blue"/>
+    </visual>
+ </link> 
+ <link name="caster_fl">
+    <inertial>
+     <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+     <mass value="0.01"/>
+     <inertia ixx="0.0160" ixy="0" ixz="0" iyy="0.0160" iyz="0"  izz="0.00002"/>
+    </inertial>
+    <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster_joint.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+       <origin rpy="1.57 0 3.14" xyz="0.02 -0.055 -0.020"/>
+    </collision>
+    <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster_joint.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0.02 -0.055 -0.020"/>
+      <material name="blue"/>
+    </visual>
+ </link>
+ <link name="caster_wheel_fl_in">
+  <inertial>
+   <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+   <mass value="0.01"/>
+   <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="0.00002" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
+  <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+       <origin rpy="1.57 0 0" xyz="0 0.030 -0.03"/>
+  </collision>
+  <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+       <origin rpy="1.57 0 0" xyz="0 0.030 -0.03"/>
+      <material name="blue"/>
+  </visual>
+ </link>
+ <link name="caster_wheel_fl_out">
+  <inertial>
+   <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+   <mass value="0.01"/>
+   <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="0.00002" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
+  <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0 -0.030 -0.03"/>
+  </collision>
+  <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0 -0.030 -0.03"/>
+      <material name="blue"/>
+  </visual>
+ </link>
+ <link name="caster_br">
+    <inertial>
+     <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+     <mass value="0.01"/>
+     <inertia ixx="0.0160" ixy="0" ixz="0" iyy="0.0160" iyz="0"  izz="0.00002"/>
+    </inertial>
+    <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster_joint.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0.02 -0.055 -0.020"/>
+    </collision>
+    <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster_joint.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0.02 -0.055 -0.020"/>
+      <material name="blue"/>
+    </visual>
+ </link>
+ <link name="caster_wheel_br_in">
+  <inertial>
+   <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+   <mass value="0.01"/>
+   <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="0.00002" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
+  <collision>
+     <geometry>
+       <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+     </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0 -0.030 -0.03"/>
+  </collision>
+  <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0 -0.030 -0.03"/>
+      <material name="blue"/>
+  </visual>
+ </link>
+ <link name="caster_wheel_br_out">
+  <inertial>
+   <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+   <mass value="0.01"/>
+   <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="0.00002" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
+  <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 0" xyz="0 0.030 -0.03"/>
+  </collision>
+  <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 0" xyz="0 0.030 -0.03"/>
+      <material name="blue"/>
+  </visual>
+ </link>
+ <link name="caster_bl">
+    <inertial>
+     <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+     <mass value="0.01"/>
+     <inertia ixx="0.0160" ixy="0" ixz="0" iyy="0.0160" iyz="0"  izz="0.00002"/>
+    </inertial>
+    <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster_joint.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0.02 -0.055 -0.020"/>
+    </collision>
+    <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster_joint.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0.02 -0.055 -0.020"/>
+      <material name="blue"/>
+    </visual>
+ </link>
+ <link name="caster_wheel_bl_in">
+  <inertial>
+   <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+   <mass value="0.01"/>
+   <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="0.00002" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
+  <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 0" xyz="0 0.030 -0.03"/>
+  </collision>
+  <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 0" xyz="0 0.030 -0.03"/>
+      <material name="blue"/>
+  </visual>
+ </link>
+ <link name="caster_wheel_bl_out">
+  <inertial>
+   <origin rpy="1.57 0 0" xyz="0.2 0 0"/>
+   <mass value="0.01"/>
+   <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="0.00002" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
+  <collision>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0 -0.030 -0.03"/>
+  </collision>
+  <visual>
+      <geometry>
+         <mesh filename="package://robomuse_5/dae/caster.dae" scale = "0.001 0.001 0.001"/>
+      </geometry>
+        <origin rpy="1.57 0 3.14" xyz="0 -0.030 -0.03"/>
+      <material name="blue"/>
+  </visual>
+ </link>
+ <!--SENSOR LINKS-->
+ <link name="imu_link"/>
+ <link name="virtual_lidar"/>
+ <link name="lidar1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+      <material name="green" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+    </collision>
+ </link>
+ <link name="lidar2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+      <material name="white" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+    </collision>
+ </link>
+ <!--JOINTS-->
+ <joint name="base_joint" type="fixed">
+     <parent link="base_footprint"/>
+     <child link="base"/>
+     <origin xyz="0.0 0.0 0.047" rpy="0 0 1.57"/>
+ </joint>
+ <joint name="right_j" type="continuous">
+     <parent link="base"/>
+     <child link="wheel_r"/>
+     <origin xyz="0 0 0.0198"/>
+     <axis  xyz = "1 0 0"/>
+ </joint>
+ <joint name="left_j" type="continuous">
+     <parent link="base"/>
+     <child link="wheel_l"/>
+     <origin xyz="0 0 0.0198"/>
+     <axis  xyz = "1 0 0"/>
+ </joint>
+ <!--CASTER WHEEL CASE JOINTS-->
+ <joint name="caster_fr_joint" type="fixed">
+     <parent link="base"/>
+     <child link="caster_fr"/>
+     <origin xyz="0.164 0.266 0.0"/>
+     <axis  xyz = "0 0 1"/>
+ </joint>
+ <joint name="caster_fl_joint" type="fixed">
+     <parent link="base"/>
+     <child link="caster_fl"/>
+     <origin xyz="-0.164 0.266 0.0"/>
+    <axis  xyz = "0 0 1"/>
+ </joint>
+ <joint name="caster_br_joint" type="fixed">
+     <parent link="base"/>
+     <child link="caster_br"/>
+     <origin xyz="0.164 -0.266 0.0" rpy="0 0 3.14"/>
+     <axis  xyz = "0 0 1"/>
+ </joint>
+ <joint name="caster_bl_joint" type="fixed">
+     <parent link="base"/>
+     <child link="caster_bl"/>
+     <origin xyz="-0.164 -0.266 0.0" rpy="0 0 3.14"/>
+     <axis  xyz = "0 0 1"/>
+ </joint>
+ <!--CASTER WHEEL JOINTS-->
+ <joint name="caster_fr_wheel_in_joint" type="fixed">
+     <parent link="caster_fr"/>
+     <child link="caster_wheel_fr_in"/>
+     <origin xyz="0 -0.0235 -0.015"/>
+     <axis  xyz = "1 0 0"/>
+ </joint>
+ <joint name="caster_fr_wheel_out_joint" type="fixed">
+     <parent link="caster_fr"/>
+     <child link="caster_wheel_fr_out"/>
+     <origin xyz="0 -0.0235 -0.015"/>
+     <axis  xyz = "1 0 0"/>
+ </joint>
+ <joint name="caster_fl_wheel_in_joint" type="fixed">
+     <parent link="caster_fl"/>
+     <child link="caster_wheel_fl_in"/>
+     <origin xyz="0 -0.0235 -0.015"/>
+     <axis  xyz = "1 0 0"/>
+ </joint>
+ <joint name="caster_fl_wheel_out_joint" type="fixed">
+     <parent link="caster_fl"/>
+     <child link="caster_wheel_fl_out"/>
+     <origin xyz="0 -0.0235 -0.015"/>
+     <axis  xyz = "1 0 0"/>
+ </joint>
+ <joint name="caster_br_wheel_in_joint" type="fixed">
+     <parent link="caster_br"/>
+     <child link="caster_wheel_br_in"/>
+     <origin xyz="0 -0.0235 -0.015"/>
+     <axis  xyz = "1 0 0"/>
+ </joint>
+ <joint name="caster_br_wheel_out_joint" type="fixed">
+     <parent link="caster_br"/>
+     <child link="caster_wheel_br_out"/>
+     <origin xyz="0 -0.0235 -0.015"/>
+     <axis  xyz = "1 0 0"/>
+ </joint>
+ <joint name="caster_bl_wheel_in_joint" type="fixed">
+     <parent link="caster_bl"/>
+     <child link="caster_wheel_bl_in"/>
+     <origin xyz="0 -0.0235 -0.015"/>
+     <axis  xyz = "1 0 0"/>
+ </joint>
+ <joint name="caster_bl_wheel_out_joint" type="fixed">
+    <parent link="caster_bl"/>
+    <child link="caster_wheel_bl_out"/>
+    <origin xyz="0 -0.0235 -0.015"/>
+    <axis  xyz = "1 0 0"/>
+ </joint>
+ <!--SENSOR JOINTS-->
+ <joint name="joint_virtual_lidar" type="fixed">
+     <origin xyz="0 0 0.25" rpy="0 0 0"/>
+     <parent link="base"/>
+     <child link="virtual_lidar"/>
+ </joint>
+ <joint name="joint_lidar1" type="fixed">
+     <origin xyz="0 -0.15 0.25" rpy="0 0 -1.57"/>
+     <parent link="base"/>
+     <child link="lidar1"/>
+ </joint> 
+ <joint name="joint_lidar2" type="fixed">
+     <origin xyz="0 0.15 0.25" rpy="0 0 1.57"/>
+     <parent link="base"/>
+     <child link="lidar2"/>
+ </joint>
+ <joint name="imu_joint" type="fixed">
+     <parent link="base"/>
+     <child link="imu_link"/>
+     <origin xyz="-0.2 0.3 0.068" rpy="0 0 0"/>
+ </joint>
+ <!--GAZEBO PROPERTIES-->
+ <gazebo reference="base">
+     <material>Gazebo/Red</material>
+ </gazebo>
+ <gazebo reference="wheel_r">
+     <mu1>0.8</mu1>
+     <mu2>0.8</mu2>
+ </gazebo>
+ <gazebo reference="wheel_l">
+     <mu1>0.8</mu1>
+     <mu2>0.8</mu2>
+ </gazebo>
+ <gazebo reference="caster_wheel_fr_in">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+ <gazebo reference="caster_wheel_fr_out">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+ <gazebo reference="caster_wheel_fl_in">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+ <gazebo reference="caster_wheel_fl_out">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+ <gazebo reference="caster_wheel_br_in">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+ <gazebo reference="caster_wheel_br_out">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+ <gazebo reference="caster_wheel_bl_in">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+ <gazebo reference="caster_wheel_bl_out">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+ </gazebo>
+ <gazebo reference="lidar1">
+   <material>Gazebo/Green</material>
+ </gazebo>
+ <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <alwaysOn>true</alwaysOn>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometrySource>world</odometrySource>
+      <publishOdomTF>true</publishOdomTF>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <publishWheelTF>false</publishWheelTF>
+      <publishTf>true</publishTf>
+      <publishWheelJointState>true</publishWheelJointState>
+      <legacyMode>false</legacyMode>
+      <updateRate>40</updateRate>
+      <leftJoint>left_j</leftJoint>
+      <rightJoint>right_j</rightJoint>
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.137</wheelDiameter>
+      <wheelAcceleration>1</wheelAcceleration>
+      <wheelTorque>10</wheelTorque>
+      <rosDebugLevel>na</rosDebugLevel>
+    </plugin>
+ </gazebo>
+ <gazebo reference="lidar1">
+    <sensor type="ray" name="head_hokuyo_sensor1">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>20</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.57</min_angle>
+            <max_angle>1.57</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller1" filename="libgazebo_ros_laser.so">
+        <topicName>/robomuse/lidarscan1</topicName>
+        <frameName>lidar1</frameName>
+      </plugin>
+    </sensor>
+ </gazebo>
+ <gazebo reference="lidar2">
+    <sensor type="ray" name="head_hokuyo_sensor2">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>20</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.57</min_angle>
+            <max_angle>1.57</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller2" filename="libgazebo_ros_laser.so">
+        <topicName>/robomuse/lidarscan2</topicName>
+        <frameName>lidar2</frameName>
+      </plugin>
+    </sensor>
+ </gazebo> 
+ <gazebo reference="imu_link">
+    <sensor type="imu" name="imu">
+      <always_on>true</always_on>
+      <visualize>false</visualize>
+    </sensor>
+    <material name="white" />
+    <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+      <bodyName>imu_link</bodyName>
+      <frameName>imu_link</frameName>
+      <topicName>imu</topicName>
+      <serviceName>imu_service</serviceName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <updateRate>0</updateRate>
+      <imu>
+        <noise>
+          <type>gaussian</type>
+          <rate>
+            <mean>0.0</mean>
+            <stddev>2e-4</stddev>
+            <bias_mean>0.0000075</bias_mean>
+            <bias_stddev>0.0000008</bias_stddev>
+          </rate>
+          <accel>
+            <mean>0.0</mean>
+            <stddev>1.7e-2</stddev>
+            <bias_mean>0.1</bias_mean>
+            <bias_stddev>0.001</bias_stddev>
+          </accel>
+        </noise>
+      </imu>
+    </plugin>
+ </gazebo>
+
+</robot>

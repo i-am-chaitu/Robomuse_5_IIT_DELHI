@@ -1,0 +1,28 @@
+<launch>
+  <arg name="x_pos" default="-3.0"/>
+  <arg name="y_pos" default="1.0"/>
+  <arg name="z_pos" default="0.0"/>
+  <arg name="open_rviz" default="true"/>  
+  <arg name="multi_robot_name" default=""/>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find robomuse_5)/urdf/perfect_muse.xacro'" />
+  
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="False"/>
+  </node>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" value="$(arg multi_robot_name)"/>
+  </node> 
+
+  <include file="$(find robomuse_5)/launch/gmapping.launch"/>
+  
+  <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch"/>
+
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find robomuse_5)/rviz/gmapping.rviz"/>
+  </group> 
+
+</launch>
+ 
